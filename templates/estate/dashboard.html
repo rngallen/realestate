@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block title %} | Dashboard{% endblock title %}
+{% block content %}
+  <section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">User Dashboard</h1>
+          <p class="lead">Manage your BT Real Estate account</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'pages:index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="dashboard" class="py-4">
+    <div class="container">
+    {% include "partials/_alerts.html" %}
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Welcome {{request.user}}</h2>
+          <p>Here are the property listings that you have inquired about</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Property</th>
+                <th scope="col">Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for house in houses %}
+              <tr>
+                <td>{{house.pk}}</td>
+                <td>{{house.title}}</td>
+                <td>{{house.currency}} {{house.price|intcomma}}</td>
+                <td>
+                  <a class="btn btn-light" href="{{house.get_absolute_url}}">View Listing</a>
+                </td>
+              </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

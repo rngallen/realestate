@@ -1,0 +1,19 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block branding %}
+    <h1 id="head">
+    <img src="{% static 'img/logo.png' %}" alt="Nyumba Yangu" height="50" width="80" class="brand_img">
+    Admin Area
+    </h1>
+{% endblock branding %} 
+
+
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "css/admin.css" %}" />
+{% endblock %}
+
+
+{% block title %}{{ title }} | Nyumba Yangu {% endblock %}
+
