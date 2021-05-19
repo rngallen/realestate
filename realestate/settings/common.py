@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from collections import defaultdict
 from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
@@ -118,6 +117,6 @@ EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = config('EMAIL_USER_TLS', cas=bool, defaul=True)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
 # EMAIL_USE_SSL = True
 EAMIL_TIMEOUT = 60
