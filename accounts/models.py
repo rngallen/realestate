@@ -19,7 +19,8 @@ class Profile(models.Model):
         User,
         verbose_name=_("Realtor"),
         on_delete=models.CASCADE,
-        db_column="RLTR", related_name='profile'
+        db_column="RLTR",
+        related_name="profile",
     )
     avatar = models.ImageField(
         _("Profile Picture"),

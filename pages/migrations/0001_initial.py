@@ -8,53 +8,246 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Company',
+            name="Company",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(blank=True, db_column='NAME', max_length=180, null=True, verbose_name='Company Name')),
-                ('tin_no', models.CharField(blank=True, db_column='TIN', max_length=20, null=True, verbose_name='Tin Number')),
-                ('vrn_no', models.CharField(blank=True, db_column='VRN', max_length=20, null=True, verbose_name='VRN Number')),
-                ('bus_reg_no', models.CharField(blank=True, db_column='REGNO', max_length=50, null=True, verbose_name="Company's Registration Number")),
-                ('address1', models.CharField(blank=True, db_column='ADDRS1', max_length=60, null=True, verbose_name='Address')),
-                ('address2', models.CharField(blank=True, db_column='ADDRS2', max_length=60, null=True, verbose_name='Address')),
-                ('address3', models.CharField(blank=True, db_column='ADDRS3', max_length=60, null=True, verbose_name='Address')),
-                ('address4', models.CharField(blank=True, db_column='ADDRS4', max_length=60, null=True, verbose_name='Address')),
-                ('city', models.CharField(blank=True, db_column='CITY', max_length=60, null=True, verbose_name='City')),
-                ('state', models.CharField(blank=True, db_column='STATE', max_length=60, null=True, verbose_name='State')),
-                ('zip_code', models.CharField(blank=True, db_column='ZIP', max_length=60, null=True, verbose_name='Zip Code')),
-                ('country', models.CharField(blank=True, db_column='COUNTRY', max_length=60, null=True, verbose_name='Country')),
-                ('phone', models.CharField(blank=True, db_column='PHONE', max_length=20, null=True, verbose_name='Telephone Number')),
-                ('fax', models.CharField(blank=True, db_column='FAX', max_length=20, null=True, verbose_name='FaX')),
-                ('email', models.EmailField(blank=True, db_column='EMAIL', max_length=254, null=True, verbose_name='Email')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        blank=True,
+                        db_column="NAME",
+                        max_length=180,
+                        null=True,
+                        verbose_name="Company Name",
+                    ),
+                ),
+                (
+                    "tin_no",
+                    models.CharField(
+                        blank=True,
+                        db_column="TIN",
+                        max_length=20,
+                        null=True,
+                        verbose_name="Tin Number",
+                    ),
+                ),
+                (
+                    "vrn_no",
+                    models.CharField(
+                        blank=True,
+                        db_column="VRN",
+                        max_length=20,
+                        null=True,
+                        verbose_name="VRN Number",
+                    ),
+                ),
+                (
+                    "bus_reg_no",
+                    models.CharField(
+                        blank=True,
+                        db_column="REGNO",
+                        max_length=50,
+                        null=True,
+                        verbose_name="Company's Registration Number",
+                    ),
+                ),
+                (
+                    "address1",
+                    models.CharField(
+                        blank=True,
+                        db_column="ADDRS1",
+                        max_length=60,
+                        null=True,
+                        verbose_name="Address",
+                    ),
+                ),
+                (
+                    "address2",
+                    models.CharField(
+                        blank=True,
+                        db_column="ADDRS2",
+                        max_length=60,
+                        null=True,
+                        verbose_name="Address",
+                    ),
+                ),
+                (
+                    "address3",
+                    models.CharField(
+                        blank=True,
+                        db_column="ADDRS3",
+                        max_length=60,
+                        null=True,
+                        verbose_name="Address",
+                    ),
+                ),
+                (
+                    "address4",
+                    models.CharField(
+                        blank=True,
+                        db_column="ADDRS4",
+                        max_length=60,
+                        null=True,
+                        verbose_name="Address",
+                    ),
+                ),
+                (
+                    "city",
+                    models.CharField(
+                        blank=True,
+                        db_column="CITY",
+                        max_length=60,
+                        null=True,
+                        verbose_name="City",
+                    ),
+                ),
+                (
+                    "state",
+                    models.CharField(
+                        blank=True,
+                        db_column="STATE",
+                        max_length=60,
+                        null=True,
+                        verbose_name="State",
+                    ),
+                ),
+                (
+                    "zip_code",
+                    models.CharField(
+                        blank=True,
+                        db_column="ZIP",
+                        max_length=60,
+                        null=True,
+                        verbose_name="Zip Code",
+                    ),
+                ),
+                (
+                    "country",
+                    models.CharField(
+                        blank=True,
+                        db_column="COUNTRY",
+                        max_length=60,
+                        null=True,
+                        verbose_name="Country",
+                    ),
+                ),
+                (
+                    "phone",
+                    models.CharField(
+                        blank=True,
+                        db_column="PHONE",
+                        max_length=20,
+                        null=True,
+                        verbose_name="Telephone Number",
+                    ),
+                ),
+                (
+                    "fax",
+                    models.CharField(
+                        blank=True,
+                        db_column="FAX",
+                        max_length=20,
+                        null=True,
+                        verbose_name="FaX",
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        blank=True,
+                        db_column="EMAIL",
+                        max_length=254,
+                        null=True,
+                        verbose_name="Email",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Company Profile',
-                'verbose_name_plural': 'Company Profile',
-                'db_table': 'COMPANY',
-                'managed': True,
+                "verbose_name": "Company Profile",
+                "verbose_name_plural": "Company Profile",
+                "db_table": "COMPANY",
+                "managed": True,
             },
         ),
         migrations.CreateModel(
-            name='SocialNetwork',
+            name="SocialNetwork",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('twitter', models.URLField(blank=True, db_column='TWITTER', null=True, verbose_name='Twitter')),
-                ('facebook', models.URLField(blank=True, db_column='FB', null=True, verbose_name='Facebook')),
-                ('linkedin', models.URLField(blank=True, db_column='LKN', null=True, verbose_name='LinkedIn')),
-                ('instagram', models.URLField(blank=True, db_column='INSTA', null=True, verbose_name='Instgram')),
-                ('pinterest', models.URLField(blank=True, db_column='PINT', null=True, verbose_name='Pinterest')),
-                ('company', models.OneToOneField(db_column='COMPANY', on_delete=django.db.models.deletion.CASCADE, related_name='social', to='pages.company', verbose_name='Company')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "twitter",
+                    models.URLField(
+                        blank=True,
+                        db_column="TWITTER",
+                        null=True,
+                        verbose_name="Twitter",
+                    ),
+                ),
+                (
+                    "facebook",
+                    models.URLField(
+                        blank=True, db_column="FB", null=True, verbose_name="Facebook"
+                    ),
+                ),
+                (
+                    "linkedin",
+                    models.URLField(
+                        blank=True, db_column="LKN", null=True, verbose_name="LinkedIn"
+                    ),
+                ),
+                (
+                    "instagram",
+                    models.URLField(
+                        blank=True,
+                        db_column="INSTA",
+                        null=True,
+                        verbose_name="Instgram",
+                    ),
+                ),
+                (
+                    "pinterest",
+                    models.URLField(
+                        blank=True,
+                        db_column="PINT",
+                        null=True,
+                        verbose_name="Pinterest",
+                    ),
+                ),
+                (
+                    "company",
+                    models.OneToOneField(
+                        db_column="COMPANY",
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="social",
+                        to="pages.company",
+                        verbose_name="Company",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'SocialNetwork',
-                'verbose_name_plural': 'SocialNetworks',
-                'db_table': 'SNETWORK',
-                'managed': True,
+                "verbose_name": "SocialNetwork",
+                "verbose_name_plural": "SocialNetworks",
+                "db_table": "SNETWORK",
+                "managed": True,
             },
         ),
     ]
