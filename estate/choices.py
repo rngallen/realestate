@@ -15,11 +15,7 @@ price_choices = {
     "200000": "200000",
     "400000": "400000",
     "800000": "800000",
-    "1000000": "1M+"
+    "1000000": "1M+",
 }
 
-state_choices = {
-    "AK": 'Alaska',
-    "AL": 'Alabama',
-    "AR": 'Arkansas'
-}
+state_choices = {"AK": "Alaska", "AL": "Alabama", "AR": "Arkansas"}

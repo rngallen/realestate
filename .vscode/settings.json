@@ -1,6 +1,7 @@
 {
-    "python.pythonPath": "C:\\Users\\ngallen\\envs\\22\\Scripts\\python.exe",
+    "python.pythonPath": "C:\\Users\\Administrator\\.virtualenvs\\realestate-WvGfVtsq\\Scripts\\python.exe",
     "editor.rulers": [
 
-    ]
+    ],
+    "python.formatting.provider": "black"
 }

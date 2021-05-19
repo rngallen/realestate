@@ -8,9 +8,9 @@ from django.contrib import messages
 
 
 def userlogin(request):
-    if request.method == 'POST':
-        username = request.POST['username'].lower()
-        password = request.POST['password']
+    if request.method == "POST":
+        username = request.POST["username"].lower()
+        password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -19,13 +19,15 @@ def userlogin(request):
         else:
             if User.objects.filter(username=username).exists():
                 messages.error(
-                    request, f"Wrong password for the user {request.POST['username']}")
+                    request, f"Wrong password for the user {request.POST['username']}"
+                )
             else:
-                messages.error(
-                    request, f"Username {username} does not exists!")
+                messages.error(request, f"Username {username} does not exists!")
     try:
-        company = Company.objects.all()[:1].get()
-        social = SocialNetwork.objects.all()[:1].get()
+        # company = Company.objects.all()[:1].get()
+        company = Company.objects.first()
+        # social = SocialNetwork.objects.all()[:1].get()
+        social = SocialNetwork.objects.first()
     except:
         company = []
         social = []
@@ -34,7 +36,7 @@ def userlogin(request):
         "social": social,
         "values": request.POST,
     }
-    return render(request, 'accounts/login.html', context)
+    return render(request, "accounts/login.html", context)
 
 
 def userregister(request):
@@ -43,18 +45,20 @@ def userregister(request):
         social = SocialNetwork.objects.all()[:1].get()
     except:
         pass
-    if request.method == 'POST':
-        fname = request.POST['first_name']
-        lname = request.POST['last_name']
-        username = request.POST['username'].lower()
-        email = request.POST['email'].lower()
-        password1 = request.POST['password']
-        password2 = request.POST['password2']
+    if request.method == "POST":
+        fname = request.POST["first_name"]
+        lname = request.POST["last_name"]
+        username = request.POST["username"].lower()
+        email = request.POST["email"].lower()
+        password1 = request.POST["password"]
+        password2 = request.POST["password2"]
         # Check for password
         if password1 == password2:
             # check for existing username
             if User.objects.filter(username=username).exists():
-                messages.error(request, f"Username {request.POST['username']} already exists!")
+                messages.error(
+                    request, f"Username {request.POST['username']} already exists!"
+                )
             else:
                 # Check for existing email
                 if User.objects.filter(email=email).exists():
@@ -62,12 +66,18 @@ def userregister(request):
                 else:
                     # create user to the model
                     user = User.objects.create_user(
-                        username=username, first_name=fname, last_name=lname, email=email, password=password1)
+                        username=username,
+                        first_name=fname,
+                        last_name=lname,
+                        email=email,
+                        password=password1,
+                    )
                     messages.success(
-                        request, f"Hello {username} your acccount has been created successfully!")
+                        request,
+                        f"Hello {username} your acccount has been created successfully!",
+                    )
                     # authenticate created user
-                    user = authenticate(
-                        request, username=username, password=password1)
+                    user = authenticate(request, username=username, password=password1)
                     # login authenticated user
                     if user is not None:
                         login(request, user)
@@ -79,11 +89,11 @@ def userregister(request):
         "social": social,
         "values": request.POST,
     }
-    return render(request, 'accounts/register.html', context)
+    return render(request, "accounts/register.html", context)
 
 
 def userlogout(request):
-    if request.method=="POST":
+    if request.method == "POST":
         logout(request)
         messages.success(request, f"You have logout!!")
         return redirect("pages:index")
